@@ -1,0 +1,417 @@
+/* Nexus Synced Custom Styles */
+:root {
+  --primary-color: #FFA600; /* Vibrant Orange-Gold */
+  --primary-color-rgb: 255, 166, 0;
+  --primary-hover: #ffb833;
+  --secondary-color: #1E2946; /* Deep Dark Slate Blue */
+  --secondary-color-rgb: 30, 41, 70;
+  --background-color: #0d1424; /* Even darker blue for pure background */
+  --surface-color: rgba(30, 41, 70, 0.6); /* Glassmorphic secondary */
+  --surface-border: rgba(255, 166, 0, 0.2); /* Subtle orange border */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--surface-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(255, 166, 0, 0.15);
+  border-color: rgba(255, 166, 0, 0.4);
+}
+
+/* Buttons */
+.btn-primary-nexus {
+  background: linear-gradient(135deg, var(--primary-color), #ff8c00);
+  color: #1e2946;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 166, 0, 0.3);
+  display: inline-block;
+}
+
+.btn-primary-nexus:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(255, 166, 0, 0.5);
+  color: #000;
+}
+
+.btn-outline-nexus {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 10px 28px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-outline-nexus:hover {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+/* Header Override */
+.header-nexus {
+  background: rgba(13, 20, 36, 0.8) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 166, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.header-nexus.scrolled {
+  background: rgba(13, 20, 36, 0.95) !important;
+  border-bottom: 1px solid rgba(255, 166, 0, 0.2);
+}
+
+.header-nexus .logo h1 {
+  color: var(--primary-color);
+  letter-spacing: 1px;
+}
+.header-nexus .logo h1 span {
+  color: var(--text-primary);
+  font-weight: 300;
+}
+
+.navmenu-nexus a {
+  color: var(--text-primary) !important;
+  font-family: var(--font-heading);
+}
+
+.navmenu-nexus a:hover,
+.navmenu-nexus .active {
+  color: var(--primary-color) !important;
+}
+
+.navmenu-nexus > ul > li > a:before {
+  background-color: var(--primary-color) !important;
+}
+
+/* Hero Section */
+.hero-nexus {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+.hero-nexus::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 166, 0, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(30, 41, 70, 0.8) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.hero-nexus .hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.4;
+  mix-blend-mode: luminosity;
+}
+
+.hero-nexus .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-nexus h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-nexus h1 .highlight {
+  color: var(--primary-color);
+  text-shadow: 0 0 20px rgba(255, 166, 0, 0.4);
+}
+
+.hero-nexus p {
+  font-size: 1.15rem;
+  margin-bottom: 30px;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+.hero-nexus-img img {
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  animation: float 6s ease-in-out infinite;
+  border: 1px solid var(--surface-border);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* About / Mission Section */
+.mission-section {
+  padding: 100px 0;
+  background: linear-gradient(180deg, var(--background-color) 0%, var(--secondary-color) 100%);
+  position: relative;
+}
+
+.mission-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.mission-section h2 span {
+  color: var(--primary-color);
+}
+
+.mission-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.sdg-badges {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.sdg-badge {
+  background: rgba(255, 166, 0, 0.1);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Products Section */
+.products-section {
+  padding: 100px 0;
+  background-color: var(--background-color);
+}
+
+.section-title-nexus {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-title-nexus h2 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+.section-title-nexus h2 span {
+  color: var(--primary-color);
+}
+.section-title-nexus p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.product-row {
+  margin-bottom: 100px;
+  align-items: center;
+}
+.product-row:last-child {
+  margin-bottom: 0;
+}
+
+.product-content h3 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+.product-content h3 .dot {
+  color: var(--primary-color);
+}
+.product-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+.product-content ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+.product-content ul li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  font-size: 1.05rem;
+}
+.product-content ul li i {
+  color: var(--primary-color);
+  margin-right: 12px;
+  font-size: 1.2rem;
+  margin-top: 2px;
+}
+
+.product-img {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+.product-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(255, 166, 0, 0.2);
+  border-radius: 20px;
+  pointer-events: none;
+}
+.product-img img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+.product-img:hover img {
+  transform: scale(1.03);
+}
+
+/* Impact Section */
+.impact-section {
+  padding: 100px 0;
+  background: url('../img/hero_bg.png') center/cover fixed;
+  position: relative;
+}
+.impact-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 20, 36, 0.85); /* Dark overlay */
+}
+
+.impact-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.impact-card {
+  text-align: left;
+  padding: 30px;
+  height: 100%;
+}
+.impact-card i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+.impact-card h4 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+/* Footer Nexus */
+.footer-nexus {
+  background-color: var(--background-color);
+  border-top: 1px solid rgba(255,166,0,0.1);
+  padding: 60px 0 30px 0;
+}
+.footer-nexus .logo h1 {
+  color: var(--primary-color);
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.footer-nexus .logo h1 span {
+  color: var(--text-primary);
+  font-weight: 300;
+}
+.footer-nexus p {
+  color: var(--text-secondary);
+}
+.footer-nexus h4 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.footer-nexus .social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,166,0,0.1);
+  color: var(--primary-color);
+  margin-right: 10px;
+  transition: 0.3s;
+}
+.footer-nexus .social-links a:hover {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+.footer-nexus .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-nexus .footer-links ul li {
+  margin-bottom: 10px;
+}
+.footer-nexus .footer-links a {
+  color: var(--text-secondary);
+}
+.footer-nexus .footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.copyright-nexus {
+  text-align: center;
+  padding-top: 30px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255,166,0,0.1);
+  color: var(--text-secondary);
+}
