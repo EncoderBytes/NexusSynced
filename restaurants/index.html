@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <!-- <title>Index - Bootslander Bootstrap Template</title> -->
+   <title>Dropo | United Kingdom's Fast & Friendly Food Delivery</title>
+  <meta name="description" content="Find Dropo and discover a place where fast meets friendly in the United
+  Kingdom. Light-speed delivery and transparency in the price support a community with each
+  order.">
+  <meta name="keywords" content="Dropo, food delivery, quick service Dundee, ethical delivery, community support">
+
+  <!-- Favicons -->
+  <link href="../assets/img/dropoLogo.svg" rel="icon">
+  <link href="../assets/img/dropoLogo.svg" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="../assets/css/main.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 0;
+        }
+
+        .restaurants-section {
+            padding: 4rem 0;
+        }
+
+        .restaurant-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .restaurant-image {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body class="index-page">
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo me-auto me-lg-0"><img src="../assets/img/dlogo.png" class="img-fluid"
+        alt="Logo"></a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html" >Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="restaurants/index.html" class="active">Restaurants</a></li>
+          <!-- <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#team">Team</a></li> -->
+          <!-- <li><a href="#pricing">Pricing</a></li> -->
+          
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Our Restaurants</h1>
+            <p>Discover amazing dining experiences across all our locations</p>
+        </div>
+    </section>
+
+    <!-- Restaurants Section -->
+    <section class="restaurants-section">
+        <div class="container">
+            <h2 class="section-title">Find Your Perfect Dining Experience</h2>
+            
+
+            <!-- Restaurants Grid -->
+          <!-- Restaurants Grid -->
+<div id="restaurants-grid" class="row g-4">
+  <!-- Example Restaurant Card -->
+  <div class="col-md-4 col-sm-6">
+    <div class="card restaurant-card">
+      <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Feasternspicedundee.com%2F&psig=AOvVaw1tcseCwtBTJZ43Mq2G8iTZ&ust=1758974568580000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPjhpoSx9o8DFQAAAAAdAAAAABAE" 
+           class="card-img-top restaurant-image" alt="Restaurant 1">
+      <div class="card-body">
+        <h5 class="card-title">Eastern Spice Dundee</h5>
+        <p class="card-text">Eastern Spice in Dundee offers a mouthwatering menu and exclusive online deals. Order now and satisfy your cravings.</p>
+        <a href="./EasternSpiceDundee/index.html" class="btn btn-primary w-100">View Restaurant</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6">
+    <div class="card restaurant-card">
+      <img src="https://images.unsplash.com/photo-1541542684-4f1a1d20b1c9?auto=format&fit=crop&w=800&q=80" 
+           class="card-img-top restaurant-image" alt="Restaurant 2">
+      <div class="card-body">
+        <h5 class="card-title">Ocean Breeze</h5>
+        <p class="card-text">Fresh seafood and coastal dining experience.</p>
+        <a href="restaurant.html?id=2" class="btn btn-primary w-100">View Restaurant</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6">
+    <div class="card restaurant-card">
+      <img src="https://images.unsplash.com/photo-1559305616-3f99cd43e353?auto=format&fit=crop&w=800&q=80" 
+           class="card-img-top restaurant-image" alt="Restaurant 3">
+      <div class="card-body">
+        <h5 class="card-title">Urban Dine</h5>
+        <p class="card-text">Trendy dining spot with international flavors.</p>
+        <a href="restaurant.html?id=3" class="btn btn-primary w-100">View Restaurant</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </section>
+</body>
+</html>

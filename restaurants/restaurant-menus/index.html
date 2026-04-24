@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Restaurant Menu - Dropo</title>
+    <meta name="description" content="Browse our delicious menu items and place your order">
+    
+    <!-- Favicons -->
+    <link href="../assets/img/dropoLogo.svg" rel="icon">
+    <link href="../assets/img/dropoLogo.svg" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #ABD04F;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background: #ABD04F;
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .restaurant-info {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .restaurant-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .menu-section {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .menu-header {
+            background: linear-gradient(135deg, var(--primary-color), #0056b3);
+            color: white;
+            padding: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .menu-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .item-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-description {
+            color: #6c757d;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .item-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--success-color);
+        }
+
+        .badge-custom {
+            background: linear-gradient(135deg, var(--success-color), #20c997);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border-width: 0.3em;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, var(--secondary-color), #495057);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #495057, #343a40);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .empty-menu {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #6c757d;
+        }
+
+        .empty-menu i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .restaurant-image {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .restaurant-info {
+                text-align: center;
+            }
+            
+            .menu-header {
+                font-size: 1.2rem;
+            }
+            
+            .item-name {
+                font-size: 1.1rem;
+            }
+        }
+
+        .rating-badge {
+            background: linear-gradient(135deg, var(--warning-color), #e0a800);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .halal-badge {
+            background: linear-gradient(135deg, var(--success-color), #20c997);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="mb-0">Restaurant Menu</h1>
+                <a href="index.html" class="back-button">
+                    <i class="bi bi-arrow-left"></i>
+                    Back to Restaurants
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Loading State -->
+        <div id="loading" class="loading-spinner">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading menu...</span>
+            </div>
+            <p class="mt-3 text-muted">Loading delicious menu items...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="error-message d-none">
+            <i class="bi bi-exclamation-triangle-fill fs-2 mb-3 d-block"></i>
+            <strong>Oops!</strong> Unable to load the menu. Please try again later.
+        </div>
+
+        <!-- Menu Content -->
+        <div id="menu-content" class="d-none">
+            <!-- Restaurant Info -->
+            <div id="restaurant-info" class="restaurant-info">
+                <!-- Restaurant details will be inserted here -->
+            </div>
+
+            <!-- Menu Sections -->
+            <div id="menu-sections">
+                <!-- Menu sections will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // CORS proxy endpoints to bypass mixed content issue
+        const MENU_API_BASE = 'https://api.allorigins.win/get?url=';
+        const RESTAURANTS_API_BASE = 'https://api.allorigins.win/get?url=';
+        const IMAGE_PROXY_BASE = 'https://api.allorigins.win/raw?url=';
+
+        // Get restaurant ID from URL parameters
+        function getRestaurantIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        // Function to get proxied image URL
+        function getImageUrl(imagePath) {
+            if (!imagePath) {
+                return 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';
+            }
+            const imageUrl = `http://192.248.171.18:5000/${imagePath}`;
+            return `${IMAGE_PROXY_BASE}${encodeURIComponent(imageUrl)}`;
+        }
+
+        // Function to create restaurant info HTML
+        function createRestaurantInfo(restaurant) {
+            const rating = restaurant.rating > 0 ? restaurant.rating.toFixed(1) : 'New';
+            const ratingStars = restaurant.rating > 0 ? '★'.repeat(Math.floor(restaurant.rating)) : '';
+            
+            return `
+                <div class="row align-items-center">
+                    <div class="col-md-2 col-12 mb-3 mb-md-0 text-center">
+                        <img src="${getImageUrl(restaurant.image)}" 
+                             alt="${restaurant.name}" 
+                             class="restaurant-image">
+                    </div>
+                    <div class="col-md-10 col-12">
+                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start">
+                            <div>
+                                <h2 class="mb-2">${restaurant.name}</h2>
+                                <p class="text-muted mb-2">
+                                    <i class="bi bi-geo-alt-fill text-primary"></i>
+                                    ${restaurant.address}
+                                </p>
+                                <div class="d-flex flex-wrap gap-2 align-items-center">
+                                    ${restaurant.halal ? '<span class="halal-badge"><i class="bi bi-check-circle-fill"></i> Halal</span>' : ''}
+                                    ${restaurant.freeDelivery ? '<span class="badge-custom"><i class="bi bi-truck"></i> Free Delivery</span>' : ''}
+                                    <span class="rating-badge">
+                                        <i class="bi bi-star-fill"></i> ${rating} ${ratingStars}
+                                    </span>
+                                    <span class="badge ${restaurant.isOpen ? 'bg-success' : 'bg-danger'}">
+                                        <i class="bi bi-${restaurant.isOpen ? 'check' : 'x'}-circle-fill"></i>
+                                        ${restaurant.isOpen ? 'Open' : 'Closed'}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to create menu section HTML
+        function createMenuSection(menu) {
+            if (!menu.menuItems || menu.menuItems.length === 0) {
+                return `
+                    <div class="menu-section">
+                        <div class="menu-header">
+                            <i class="bi bi-list-ul"></i> ${menu.name}
+                            ${menu.description ? `<small class="d-block mt-1 opacity-75">${menu.description}</small>` : ''}
+                        </div>
+                        <div class="empty-menu">
+                            <i class="bi bi-clipboard-x"></i>
+                            <h5>No items available</h5>
+                            <p>This menu section is currently empty. Please check back later!</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const menuItemsHtml = menu.menuItems.map(item => `
+                <div class="menu-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1">
+                            <div class="item-name">${item.name}</div>
+                            ${item.description ? `<div class="item-description">${item.description}</div>` : ''}
+                            ${item.preparationTime ? `<small class="text-muted"><i class="bi bi-clock"></i> ${item.preparationTime}</small>` : ''}
+                        </div>
+                        <div class="text-end ms-3">
+                            <div class="item-price">£${item.price.toFixed(2)}</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="menu-section">
+                    <div class="menu-header">
+                        <i class="bi bi-list-ul"></i> ${menu.name}
+                        <span class="badge bg-light text-dark ms-2">${menu.menuItems.length} items</span>
+                        ${menu.description ? `<small class="d-block mt-1 opacity-75">${menu.description}</small>` : ''}
+                    </div>
+                    ${menuItemsHtml}
+                </div>
+            `;
+        }
+
+        // Function to fetch menu data using CORS proxy
+        async function fetchMenu(restaurantId) {
+            try {
+                showLoading();
+                
+                const menuUrl = `http://192.248.171.18:5000/api/v1/menus/${restaurantId}`;
+                const proxyUrl = `${MENU_API_BASE}${encodeURIComponent(menuUrl)}`;
+                
+                const response = await fetch(proxyUrl);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const proxyResponse = await response.json();
+                // Parse the actual API response from the proxy
+                const data = JSON.parse(proxyResponse.contents);
+                console.log('Menu API Response:', data); // Debug log
+                displayMenu(data.menus);
+
+            } catch (error) {
+                console.error('Error fetching menu:', error);
+                showError();
+            }
+        }
+
+        // Function to display menu
+        function displayMenu(menus) {
+            hideLoading();
+            
+            if (!menus || menus.length === 0) {
+                showError();
+                return;
+            }
+
+            // Check if we have restaurant info in the first menu
+            const firstMenu = menus[0];
+            if (firstMenu && firstMenu.restaurant) {
+                // Display restaurant info (from first menu's restaurant data)
+                const restaurantInfoContainer = document.getElementById('restaurant-info');
+                const restaurant = firstMenu.restaurant;
+                restaurantInfoContainer.innerHTML = createRestaurantInfo(restaurant);
+            } else {
+                // If no restaurant info available, fetch it separately
+                fetchRestaurantInfo(getRestaurantIdFromUrl());
+            }
+
+            // Display menu sections
+            const menuSectionsContainer = document.getElementById('menu-sections');
+            menuSectionsContainer.innerHTML = menus.map(menu => createMenuSection(menu)).join('');
+
+            // Show menu content
+            document.getElementById('menu-content').classList.remove('d-none');
+        }
+
+        // UI helper functions
+        function showLoading() {
+            document.getElementById('loading').classList.remove('d-none');
+            document.getElementById('error').classList.add('d-none');
+            document.getElementById('menu-content').classList.add('d-none');
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').classList.add('d-none');
+        }
+
+        function showError() {
+            hideLoading();
+            document.getElementById('error').classList.remove('d-none');
+            document.getElementById('menu-content').classList.add('d-none');
+        }
+
+        // Function to fetch restaurant info separately using CORS proxy
+        async function fetchRestaurantInfo(restaurantId) {
+            try {
+                const restaurantUrl = 'http://192.248.171.18:5000/api/v1/restaurants';
+                const proxyUrl = `${RESTAURANTS_API_BASE}${encodeURIComponent(restaurantUrl)}`;
+                
+                const response = await fetch(proxyUrl);
+                
+                if (!response.ok) {
+                    console.warn('Could not fetch restaurant info');
+                    return;
+                }
+
+                const proxyResponse = await response.json();
+                // Parse the actual API response from the proxy
+                const data = JSON.parse(proxyResponse.contents);
+                const restaurant = data.resturants?.find(r => r._id === restaurantId);
+                
+                if (restaurant) {
+                    const restaurantInfoContainer = document.getElementById('restaurant-info');
+                    restaurantInfoContainer.innerHTML = createRestaurantInfo(restaurant);
+                } else {
+                    // Hide restaurant info section if not found
+                    document.getElementById('restaurant-info').style.display = 'none';
+                }
+
+            } catch (error) {
+                console.warn('Error fetching restaurant info:', error);
+                // Hide restaurant info section on error
+                document.getElementById('restaurant-info').style.display = 'none';
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            const restaurantId = getRestaurantIdFromUrl();
+            
+            if (!restaurantId) {
+                // If no ID provided, redirect back to restaurants page
+                window.location.href = '../index.html';
+                return;
+            }
+            
+            fetchMenu(restaurantId);
+        });
+    </script>
+</body>
+</html>
