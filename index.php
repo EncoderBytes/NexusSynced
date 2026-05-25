@@ -188,6 +188,7 @@ require_once __DIR__ . '/includes/header.php';
       <h2 class="prof-title">Let's Build<br>Something Together.</h2>
       <p class="prof-sub" style="margin-bottom:2rem;">Tell us about your project. We'll get back to you within 24 hours.</p>
       <form id="contact-form">
+        <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
         <div class="form-group">
           <label>Name</label>
           <input type="text" name="name" required placeholder="Your name">
