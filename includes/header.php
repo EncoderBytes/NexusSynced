@@ -46,6 +46,7 @@ if (!$is_devil && isset($_COOKIE['nexus_mode']) && $_COOKIE['nexus_mode'] === 'd
     <?php else: ?>
     <li><a href="/about.php">ABOUT</a></li>
     <li><a href="/services.php">SERVICES</a></li>
+    <li><a href="/services.php#trainings">TRAININGS</a></li>
     <li><a href="/portfolio.php">PORTFOLIO</a></li>
     <li><a href="/contact.php">CONTACT</a></li>
     <?php endif; ?>

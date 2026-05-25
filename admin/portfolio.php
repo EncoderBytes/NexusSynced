@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $items = $pdo->query("SELECT * FROM portfolio ORDER BY sort_order ASC, id DESC")->fetchAll();
-$categories = ['web', 'mobile', 'ai', 'saas'];
+$categories = ['web', 'mobile', 'ai', 'saas', 'training'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
