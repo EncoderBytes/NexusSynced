@@ -1,295 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Nexus Synced | AI-Powered Digital Products for Social Impact</title>
-  <meta name="description" content="Nexus Synced is a women-led software company building high-performance, AI-powered digital products for femtech, e-commerce, and online branding, aligned with UN Sustainable Development Goals.">
-  <meta name="keywords" content="Nexus Synced, AI products, women-led software company, Cycle Sync, AI Domain Generator, Amazon AI Content Generator, femtech, social impact">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexusSynced</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0A0A0A;
+  --surface:#111111;
+  --surface2:#181818;
+  --border:#2a2a2a;
+  --accent:#FF3D00;
+  --accent2:#FFD600;
+  --text:#F0EDE6;
+  --muted:#888;
+  --green:#00E676;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:default}
+.mono{font-family:'DM Mono',monospace}
+.syne{font-family:'Syne',sans-serif}
 
-  <!-- Favicons -->
-  <link href="assets/img/dropoLogo.svg" rel="icon">
-  <link href="assets/img/dropoLogo.svg" rel="apple-touch-icon">
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.92);backdrop-filter:blur(12px)}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.02em}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.85rem;font-family:'DM Mono',monospace;letter-spacing:0.05em;transition:color 0.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--accent);color:#fff;border:none;padding:0.55rem 1.4rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;letter-spacing:0.03em}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 3rem 4rem;position:relative;overflow:hidden}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:var(--surface2);border:1px solid var(--border);padding:0.4rem 1rem;font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--muted);margin-bottom:2rem}
+.hero-tag .dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+h1.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3rem,7vw,6.5rem);line-height:0.95;letter-spacing:-0.03em;margin-bottom:2rem}
+h1.hero-title .accent{color:var(--accent)}
+h1.hero-title .accent2{color:var(--accent2)}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:520px;line-height:1.7;margin-bottom:3rem}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;border:none;padding:0.9rem 2.2rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;letter-spacing:0.02em;transition:transform 0.15s}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);padding:0.9rem 2.2rem;font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;cursor:pointer;letter-spacing:0.02em;transition:border-color 0.2s}
+.btn-outline:hover{border-color:var(--text)}
+.hero-grid-bg{position:absolute;top:0;right:0;width:55%;height:100%;opacity:0.03;background-image:repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 1px,transparent 60px),repeating-linear-gradient(90deg,#fff 0,#fff 1px,transparent 1px,transparent 60px);pointer-events:none}
+.hero-counter{position:absolute;right:3rem;bottom:3rem;text-align:right}
+.hero-counter .num{font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--accent)}
+.hero-counter .label{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+/* TICKER */
+.ticker{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);padding:0.8rem 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;gap:3rem;animation:tick 18s linear infinite}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase}
+.ticker-item span{color:var(--accent);margin-right:0.5rem}
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-  
-  <!-- Nexus Custom CSS -->
-  <link href="assets/css/nexus.css" rel="stylesheet">
+/* SECTION COMMON */
+section{padding:6rem 3rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+h2.section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-0.02em;margin-bottom:1rem;line-height:1.1}
+.section-sub{color:var(--muted);font-size:1rem;max-width:500px;line-height:1.7;margin-bottom:3rem}
+
+/* SERVICES — TWO CARDS */
+.two-up{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--border)}
+.service-card{background:var(--bg);padding:3rem;position:relative;overflow:hidden}
+.service-card:hover .card-hover-line{width:100%}
+.card-hover-line{position:absolute;bottom:0;left:0;height:2px;width:0;background:var(--accent);transition:width 0.4s}
+.card-num{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--muted);margin-bottom:1.5rem;letter-spacing:0.1em}
+.card-icon{font-size:2.5rem;margin-bottom:1.5rem;line-height:1}
+.card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.6rem;margin-bottom:1rem;letter-spacing:-0.02em}
+.card-desc{color:var(--muted);font-size:0.9rem;line-height:1.7;margin-bottom:2rem}
+.card-tag{display:inline-block;background:var(--surface2);border:1px solid var(--border);font-family:'DM Mono',monospace;font-size:0.72rem;padding:0.3rem 0.8rem;color:var(--muted);margin-right:0.5rem;margin-bottom:0.5rem}
+.worst-card{border-top:2px solid var(--accent2)}
+.worst-card .card-hover-line{background:var(--accent2)}
+
+/* QUEUE */
+.queue-section{background:var(--surface)}
+.queue-board{display:flex;gap:1px;background:var(--border);margin-top:2.5rem}
+.queue-col{flex:1;background:var(--bg);padding:1.5rem}
+.queue-col-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:1.5rem}
+.queue-col-header .status-dot{width:8px;height:8px;border-radius:50%}
+.status-submitted .status-dot{background:#555}
+.status-building .status-dot{background:var(--accent2);animation:pulse 1s infinite}
+.status-done .status-dot{background:var(--green)}
+.status-sold .status-dot{background:var(--accent)}
+.queue-col-title{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+.queue-item{background:var(--surface2);border:1px solid var(--border);padding:1rem;margin-bottom:0.75rem;position:relative}
+.queue-item:hover{border-color:#444}
+.qi-id{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);margin-bottom:0.4rem}
+.qi-name{font-family:'Syne',sans-serif;font-weight:600;font-size:0.9rem;margin-bottom:0.3rem}
+.qi-type{font-size:0.75rem;color:var(--muted)}
+.qi-badge{position:absolute;top:0.7rem;right:0.7rem;font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.2rem 0.5rem;border-radius:2px}
+.badge-web{background:#1a2a1a;color:var(--green)}
+.badge-mobile{background:#1a1a2a;color:#7B8FFF}
+.badge-ai{background:#2a1a1a;color:var(--accent)}
+.building-bar{height:2px;background:var(--surface);margin-top:0.8rem;overflow:hidden}
+.building-bar-fill{height:100%;background:var(--accent2);animation:build 2s ease-in-out infinite alternate}
+@keyframes build{from{width:30%}to{width:85%}}
+
+/* PACKAGES */
+.packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);margin-top:2.5rem}
+.pkg{background:var(--bg);padding:2.5rem 2rem;position:relative}
+.pkg.featured{background:var(--accent);color:#fff}
+.pkg.featured .pkg-sub,.pkg.featured .pkg-feature{color:rgba(255,255,255,0.75)}
+.pkg.featured .pkg-price{color:#fff}
+.pkg-label{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem}
+.pkg.featured .pkg-label{color:rgba(255,255,255,0.6)}
+.pkg-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:0.4rem;letter-spacing:-0.02em}
+.pkg-sub{color:var(--muted);font-size:0.85rem;margin-bottom:2rem;line-height:1.5}
+.pkg-price{font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;margin-bottom:2rem}
+.pkg-price sup{font-size:1rem}
+.pkg-feature{font-size:0.82rem;color:var(--muted);padding:0.5rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.5rem}
+.pkg.featured .pkg-feature{border-color:rgba(255,255,255,0.15)}
+.pkg-feature::before{content:'→';color:var(--accent);font-size:0.8rem}
+.pkg.featured .pkg-feature::before{color:#fff}
+.pkg-cta{width:100%;margin-top:2rem;padding:0.85rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;letter-spacing:0.03em;border:1px solid var(--border);background:transparent;color:var(--text);transition:background 0.2s}
+.pkg-cta:hover{background:var(--surface2)}
+.pkg.featured .pkg-cta{background:#fff;color:var(--accent);border:none}
+
+/* SUBMIT */
+.submit-section{background:var(--surface)}
+.submit-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem}
+.form-group{margin-bottom:1.5rem}
+.form-label{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;display:block}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:0.85rem 1rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:#555}
+.form-textarea{resize:vertical;min-height:120px}
+.form-select{appearance:none;cursor:pointer}
+.radio-group{display:flex;gap:1rem}
+.radio-btn{flex:1;border:1px solid var(--border);padding:0.8rem;text-align:center;cursor:pointer;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.05em;color:var(--muted);transition:all 0.2s;user-select:none}
+.radio-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(255,61,0,0.05)}
+.submit-info{padding-left:2rem;border-left:1px solid var(--border)}
+.submit-info h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:1rem}
+.info-stat{margin-bottom:2rem}
+.info-stat .stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.5rem;color:var(--accent);line-height:1}
+.info-stat .stat-label{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.2rem}
+.timeline-item{display:flex;gap:1rem;margin-bottom:1.5rem;align-items:flex-start}
+.tl-num{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);min-width:24px;margin-top:2px}
+.tl-text{font-size:0.85rem;color:var(--muted);line-height:1.6}
+
+/* WORST SECTION */
+.worst-section{border-top:2px solid var(--accent2)}
+.worst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:2.5rem}
+.worst-item{background:var(--bg);padding:2rem;cursor:pointer;transition:background 0.2s}
+.worst-item:hover{background:var(--surface2)}
+.worst-num{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);margin-bottom:1rem}
+.worst-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:0.5rem;letter-spacing:-0.01em}
+.worst-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:1rem}
+.worst-status{font-family:'DM Mono',monospace;font-size:0.7rem;padding:0.25rem 0.7rem;display:inline-block}
+.ws-built{background:#1a2a1a;color:var(--green)}
+.ws-building{background:#2a2a1a;color:var(--accent2)}
+.ws-idea{background:var(--surface2);color:var(--muted)}
+.worst-price{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-top:1rem;color:var(--accent2)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:3rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:gap}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:0.4rem}
+.footer-logo span{color:var(--accent)}
+.footer-sub{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);letter-spacing:0.08em}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);text-decoration:none;letter-spacing:0.05em}
+.footer-links a:hover{color:var(--text)}
+.secp-badge{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);border:1px solid var(--border);padding:0.3rem 0.8rem;letter-spacing:0.08em}
+
+@media(max-width:768px){
+  .two-up,.packages-grid,.submit-grid,.worst-grid{grid-template-columns:1fr}
+  .queue-board{flex-direction:column}
+  nav{padding:1rem 1.5rem}
+  section,nav{padding-left:1.5rem;padding-right:1.5rem}
+  .hero{padding-left:1.5rem;padding-right:1.5rem}
+}
+</style>
 </head>
+<body>
 
-<body class="index-page">
+<nav>
+  <div class="logo syne">NEXUS<span>SYNCED</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">SERVICES</a></li>
+    <li><a href="#queue">QUEUE</a></li>
+    <li><a href="#worst">WORST APPS</a></li>
+    <li><a href="#packages">PRICING</a></li>
+  </ul>
+  <button class="nav-cta">SUBMIT IDEA →</button>
+</nav>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header header-nexus d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-tag"><span class="dot"></span> <span class="mono" style="font-size:0.72rem">SECP REGISTERED · SMC · PAKISTAN</span></div>
+  <h1 class="hero-title syne">
+    YOUR IDEA.<br>
+    <span class="accent">LIVE IN</span><br>
+    <span class="accent2">72 HOURS.</span>
+  </h1>
+  <p class="hero-sub">We turn startup ideas into working MVPs — web, mobile, AI-powered. Fast enough to show investors. Sharp enough to win customers.</p>
+  <div class="hero-actions">
+    <button class="btn-primary">SUBMIT YOUR IDEA</button>
+    <button class="btn-outline">SEE WORST APPS ↓</button>
+  </div>
+  <div class="hero-counter">
+    <div class="num">23</div>
+    <div class="label mono">MVPs SHIPPED</div>
+  </div>
+</section>
 
-      <a href="index.html" class="logo me-auto me-lg-0">
-        <!-- Text Logo for Nexus Synced -->
-        <h1 class="m-0">NEXUS<span>SYNCED</span></h1>
-      </a>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item"><span>→</span>WEB APP</span>
+    <span class="ticker-item"><span>→</span>MOBILE APP</span>
+    <span class="ticker-item"><span>→</span>AI POWERED</span>
+    <span class="ticker-item"><span>→</span>PITCH DECK</span>
+    <span class="ticker-item"><span>→</span>MVP IN DAYS</span>
+    <span class="ticker-item"><span>→</span>INVESTOR READY</span>
+    <span class="ticker-item"><span>→</span>SECP REGISTERED</span>
+    <span class="ticker-item"><span>→</span>72 HOUR BUILD</span>
+    <span class="ticker-item"><span>→</span>WEB APP</span>
+    <span class="ticker-item"><span>→</span>MOBILE APP</span>
+    <span class="ticker-item"><span>→</span>AI POWERED</span>
+    <span class="ticker-item"><span>→</span>PITCH DECK</span>
+    <span class="ticker-item"><span>→</span>MVP IN DAYS</span>
+    <span class="ticker-item"><span>→</span>INVESTOR READY</span>
+    <span class="ticker-item"><span>→</span>SECP REGISTERED</span>
+    <span class="ticker-item"><span>→</span>72 HOUR BUILD</span>
+  </div>
+</div>
 
-      <nav id="navmenu" class="navmenu navmenu-nexus">
-        <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#mission">Our Mission</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#impact">Social Impact</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag">/ WHAT WE DO</div>
+  <h2 class="section-title syne">TWO THINGS.<br>BOTH DANGEROUS.</h2>
+  <p class="section-sub">Submit your idea. We build it. If you want it — buy it. If you don't, someone else will.</p>
+  <div class="two-up">
+    <div class="service-card">
+      <div class="card-num mono">01 / MVP STUDIO</div>
+      <div class="card-icon">⚡</div>
+      <h3 class="card-title syne">Your Startup.<br>Built Fast.</h3>
+      <p class="card-desc">Submit your startup idea. We design, develop, and deliver a working MVP — web app, mobile app, or AI SaaS — in days. Pitch deck included. Investor-ready from day one.</p>
+      <span class="card-tag">WEB APP</span>
+      <span class="card-tag">MOBILE</span>
+      <span class="card-tag">AI / SAAS</span>
+      <span class="card-tag">PITCH DECK</span>
+      <div class="card-hover-line"></div>
     </div>
-  </header>
+    <div class="service-card worst-card">
+      <div class="card-num mono">02 / WORST APPS</div>
+      <div class="card-icon" style="color:var(--accent2)">💀</div>
+      <h3 class="card-title syne" style="color:var(--accent2)">Worst Idea?<br>We'll Build It.</h3>
+      <p class="card-desc">Send us your most absurd, useless, or cursed app idea. We build it anyway. Every week, one terrible idea ships. If you want it — it's yours. If not — it lives in the Hall of Shame.</p>
+      <span class="card-tag">WEEKLY DROP</span>
+      <span class="card-tag">BUY THE SOURCE</span>
+      <span class="card-tag">HALL OF SHAME</span>
+      <div class="card-hover-line"></div>
+    </div>
+  </div>
+</section>
 
-  <main class="main">
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero-nexus">
-      <img src="assets/img/hero_bg.png" alt="High-tech glowing abstract background" class="hero-bg" data-aos="fade-in">
-
-      <div class="container">
-        <div class="row gy-4 align-items-center justify-content-between">
-          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-            <h1>Building <span class="highlight">AI-Powered</span> Digital Products with Purpose</h1>
-            <p>We are a women-led software company creating high-performance tools for fast-growing markets in femtech, e-commerce enablement, and online branding.</p>
-            <div class="d-flex gap-3">
-              <a href="#products" class="btn-primary-nexus">Explore Our Products</a>
-              <a href="#mission" class="btn-outline-nexus">Our Mission</a>
-            </div>
-          </div>
-          
-          <div class="col-lg-5 order-lg-last hero-nexus-img d-none d-lg-block" data-aos="zoom-in" data-aos-delay="200">
-            <!-- Representing the tech stack visually in the hero using one of our product images, or keeping it abstract -->
-            <img src="assets/img/cycle_sync.png" class="img-fluid" alt="Cycle Sync Dashboard floating UI">
-          </div>
-        </div>
+<!-- QUEUE -->
+<section id="queue" class="queue-section">
+  <div class="section-tag">/ LIVE BUILD QUEUE</div>
+  <h2 class="section-title syne">WATCH IT<br>HAPPEN.</h2>
+  <p class="section-sub">Real-time visibility into every idea in the pipeline. Your idea gets a number. We ship in order.</p>
+  <div class="queue-board">
+    <div class="queue-col status-submitted">
+      <div class="queue-col-header"><div class="status-dot"></div><span class="queue-col-title">Submitted</span></div>
+      <div class="queue-item">
+        <div class="qi-id mono">#0041</div>
+        <div class="qi-name syne">FoodDrop Local</div>
+        <div class="qi-type">Hyperlocal delivery SaaS</div>
+        <span class="qi-badge badge-web">WEB</span>
       </div>
-    </section>
-    <!-- /Hero Section -->
-
-    <!-- About / Mission Section -->
-    <section id="mission" class="mission-section">
-      <div class="container" data-aos="fade-up">
-        <div class="row justify-content-between align-items-center">
-          
-          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="100">
-            <h2>Empowering Women & <span>Fast-Growing Markets</span></h2>
-            <p class="mission-text mt-4">
-              Our business is unique because we combine AI-powered digital products with a clear social impact mission focused on women, youth, and emerging markets, instead of building generic, one-size-fits-all tools. 
-            </p>
-            <p class="mission-text mt-3">
-              Unlike many global competitors that primarily target mature markets with subscription-heavy models, we are a women-led team designing around real local constraints such as privacy concerns, affordability, and lower digital literacy, ensuring our solutions remain accessible and relevant.
-            </p>
-            
-            <div class="sdg-badges">
-              <span class="sdg-badge"><i class="bi bi-book"></i> SDG 4: Quality Education</span>
-              <span class="sdg-badge"><i class="bi bi-gender-ambiguous"></i> SDG 5: Gender Equality</span>
-              <span class="sdg-badge"><i class="bi bi-graph-up-arrow"></i> SDG 8: Economic Growth</span>
-              <span class="sdg-badge"><i class="bi bi-cpu"></i> SDG 9: Innovation</span>
-            </div>
-          </div>
-
-          <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
-            <div class="glass-panel p-5">
-              <h4 class="text-white mb-4"><i class="bi bi-lightning-charge text-warning me-2"></i> Our Difference</h4>
-              <ul class="list-unstyled mission-text">
-                <li class="mb-3"><i class="bi bi-check-circle-fill text-warning me-2"></i> Designed for real local constraints (privacy, affordability).</li>
-                <li class="mb-3"><i class="bi bi-check-circle-fill text-warning me-2"></i> Focused on small businesses & everyday users.</li>
-                <li class="mb-3"><i class="bi bi-check-circle-fill text-warning me-2"></i> Embedding products into training programs.</li>
-                <li><i class="bi bi-check-circle-fill text-warning me-2"></i> Turning community into a core technological strength.</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
+      <div class="queue-item">
+        <div class="qi-id mono">#0042</div>
+        <div class="qi-name syne">AI Tutor PK</div>
+        <div class="qi-type">EdTech mobile app</div>
+        <span class="qi-badge badge-mobile">MOBILE</span>
       </div>
-    </section>
-    <!-- /About / Mission Section -->
-
-    <!-- Products Section -->
-    <section id="products" class="products-section">
-      <div class="container">
-        
-        <div class="section-title-nexus" data-aos="fade-up">
-          <h2>Our AI <span>Products</span></h2>
-          <p>Practical, easy to adopt, and directly supportive of small businesses and everyday users.</p>
-        </div>
-
-        <!-- Product 1: Cycle Sync -->
-        <div class="row product-row">
-          <div class="col-lg-6 order-2 order-lg-1 product-content" data-aos="fade-right">
-            <h3>Cycle Sync<span class="dot">.</span></h3>
-            <p>An AI-powered period tracking application that delivers real-time, personalized insights into users’ mental and physical health, positioning us in the rapidly expanding menstrual health apps market.</p>
-            <ul>
-              <li><i class="bi bi-arrow-right-circle-fill"></i> Personalized real-time health insights.</li>
-              <li><i class="bi bi-arrow-right-circle-fill"></i> Mental and physical well-being tracking.</li>
-              <li><i class="bi bi-arrow-right-circle-fill"></i> Privacy-first approach for sensitive data.</li>
-            </ul>
-            <!-- <a href="#" class="btn-outline-nexus mt-3">Learn More</a> -->
-          </div>
-          <div class="col-lg-5 offset-lg-1 order-1 order-lg-2 mb-5 mb-lg-0" data-aos="fade-left">
-            <div class="product-img">
-              <img src="assets/img/cycle_sync.png" alt="Cycle Sync App Interface">
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 2: Amazon AI Generator -->
-        <div class="row product-row">
-          <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
-            <div class="product-img">
-              <img src="assets/img/amazon_generator.png" alt="Amazon AI Content Generator UI">
-            </div>
-          </div>
-          <div class="col-lg-6 offset-lg-1 product-content" data-aos="fade-left">
-            <h3>Amazon AI Content Generator<span class="dot">.</span></h3>
-            <p>Built for the e-commerce ecosystem, this tool converts raw product information into optimized, SEO-friendly titles, bullet points, and A+ content to maximize visibility and conversions.</p>
-            <ul>
-              <li><i class="bi bi-arrow-right-circle-fill"></i> Automated SEO title generation.</li>
-              <li><i class="bi bi-arrow-right-circle-fill"></i> High-converting bullet points.</li>
-              <li><i class="bi bi-arrow-right-circle-fill"></i> Seamless raw data transformation.</li>
-            </ul>
-            <!-- <a href="#" class="btn-outline-nexus mt-3">Try Generator</a> -->
-          </div>
-        </div>
-
-        <!-- Product 3: Domain Name Generator -->
-        <div class="row product-row">
-          <div class="col-lg-6 order-2 order-lg-1 product-content" data-aos="fade-right">
-            <h3>AI Domain Name Generator<span class="dot">.</span></h3>
-            <p>Enables founders and small businesses to instantly generate creative, relevant, and available domain ideas within a rapidly expanding global domain and registrar market.</p>
-            <ul>
-              <li><i class="bi bi-arrow-right-circle-fill"></i> Instant, context-aware suggestions.</li>
-              <li><i class="bi bi-arrow-right-circle-fill"></i> Availability checking in real-time.</li>
-              <li><i class="bi bi-arrow-right-circle-fill"></i> Creative branding combinations.</li>
-            </ul>
-            <!-- <a href="#" class="btn-outline-nexus mt-3">Generate Domain</a> -->
-          </div>
-          <div class="col-lg-5 offset-lg-1 order-1 order-lg-2 mb-5 mb-lg-0" data-aos="fade-left">
-            <div class="product-img">
-              <img src="assets/img/domain_generator.png" alt="AI Domain Name Generator Interface">
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <!-- /Products Section -->
-
-    <!-- Social Impact Section -->
-    <section id="impact" class="impact-section">
-      <div class="container impact-content">
-        <div class="section-title-nexus" data-aos="fade-up">
-          <h2 class="text-white">Youth & Women <span>Empowerment</span></h2>
-          <p class="text-light">Beyond products, we integrate training, mentorship, and upskilling directly into our business model.</p>
-        </div>
-
-        <div class="row gy-4 mt-4">
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="glass-panel impact-card">
-              <i class="bi bi-laptop"></i>
-              <h4 class="text-white">Market-Ready Skills</h4>
-              <p class="text-secondary mb-0">We design and deliver capacity-building programs in AI, software development, and UI/UX for early-stage founders and youth.</p>
-            </div>
-          </div>
-          
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="glass-panel impact-card">
-              <i class="bi bi-shield-check"></i>
-              <h4 class="text-white">Digital Safety</h4>
-              <p class="text-secondary mb-0">Raising awareness about digital violence against women and creating safer, more inclusive online environments.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="glass-panel impact-card">
-              <i class="bi bi-globe-americas"></i>
-              <h4 class="text-white">Inclusive Economy</h4>
-              <p class="text-secondary mb-0">Supporting inclusive participation in the digital economy, specifically in Pakistan and other emerging markets.</p>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </section>
-    <!-- /Social Impact Section -->
-
-  </main>
-
-  <!-- Footer -->
-  <footer id="contact" class="footer-nexus">
-    <div class="container">
-      <div class="row gy-4 justify-content-between">
-        
-        <div class="col-lg-5">
-          <a href="index.html" class="logo text-decoration-none">
-            <h1 class="m-0">NEXUS<span>SYNCED</span></h1>
-          </a>
-          <p class="mt-4">
-            Building high-performance, AI-powered digital products for fast-growing markets in femtech, e-commerce enablement, and online branding. Driven by social impact and aligned with UN SDGs.
-          </p>
-          <div class="social-links mt-4">
-            <a href="#"><i class="bi bi-twitter-x"></i></a>
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 footer-links">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#mission">About Us</a></li>
-            <li><a href="#products">Our Products</a></li>
-            <li><a href="#impact">Social Impact</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-6 footer-links">
-          <h4>Contact Us</h4>
-          <p>
-            <strong>Email:</strong> info@nexussynced.com<br>
-            <strong>Location:</strong> Emerging Markets<br>
-          </p>
-        </div>
-
+      <div class="queue-item">
+        <div class="qi-id mono">#0043 ← WORST</div>
+        <div class="qi-name syne">Rate My Chai</div>
+        <div class="qi-type">Chai shop rating app</div>
+        <span class="qi-badge badge-ai">WORST</span>
       </div>
     </div>
-
-    <div class="container copyright-nexus mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 text-white">Nexus Synced</strong> <span>All Rights Reserved</span></p>
+    <div class="queue-col status-building">
+      <div class="queue-col-header"><div class="status-dot"></div><span class="queue-col-title">Building Now</span></div>
+      <div class="queue-item">
+        <div class="qi-id mono">#0039</div>
+        <div class="qi-name syne">CreditFlow UAE</div>
+        <div class="qi-type">Fintech lending platform</div>
+        <span class="qi-badge badge-web">WEB</span>
+        <div class="building-bar"><div class="building-bar-fill"></div></div>
+      </div>
     </div>
-  </footer>
+    <div class="queue-col status-done">
+      <div class="queue-col-header"><div class="status-dot"></div><span class="queue-col-title">Done — Available</span></div>
+      <div class="queue-item">
+        <div class="qi-id mono">#0037</div>
+        <div class="qi-name syne">ClinicAI Pro</div>
+        <div class="qi-type">Healthcare management</div>
+        <span class="qi-badge badge-ai">AI</span>
+      </div>
+      <div class="queue-item">
+        <div class="qi-id mono">#0038 ← WORST</div>
+        <div class="qi-name syne">Rishta Swipe</div>
+        <div class="qi-type">Worst App Series #4</div>
+        <span class="qi-badge badge-ai">WORST</span>
+      </div>
+    </div>
+    <div class="queue-col status-sold">
+      <div class="queue-col-header"><div class="status-dot"></div><span class="queue-col-title">Sold</span></div>
+      <div class="queue-item">
+        <div class="qi-id mono">#0035</div>
+        <div class="qi-name syne">Rooftop Solar PK</div>
+        <div class="qi-type">CleanTech marketplace</div>
+        <span class="qi-badge badge-web">WEB</span>
+      </div>
+      <div class="queue-item">
+        <div class="qi-id mono">#0036</div>
+        <div class="qi-name syne">HireBlind</div>
+        <div class="qi-type">Anonymous hiring app</div>
+        <span class="qi-badge badge-mobile">MOBILE</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="background-color: #FFA600;"><i class="bi bi-arrow-up-short" style="color: #1E2946;"></i></a>
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="section-tag">/ PRICING</div>
+  <h2 class="section-title syne">PICK YOUR<br>WEAPON.</h2>
+  <p class="section-sub">No retainers. No equity. Just flat packages that actually ship.</p>
+  <div class="packages-grid">
+    <div class="pkg">
+      <div class="pkg-label mono">STARTER</div>
+      <div class="pkg-name syne">Validate</div>
+      <div class="pkg-sub">Prove the idea before spending big</div>
+      <div class="pkg-price syne"><sup>$</sup>800</div>
+      <div class="pkg-feature">Clickable web prototype</div>
+      <div class="pkg-feature">Investor pitch deck (12 slides)</div>
+      <div class="pkg-feature">Market size research</div>
+      <div class="pkg-feature">Delivered in 48 hours</div>
+      <button class="pkg-cta syne">GET STARTED →</button>
+    </div>
+    <div class="pkg featured">
+      <div class="pkg-label mono" style="color:rgba(255,255,255,0.55)">MOST POPULAR</div>
+      <div class="pkg-name syne">Launch</div>
+      <div class="pkg-sub">Full MVP, ready to show investors</div>
+      <div class="pkg-price syne"><sup>$</sup>4,500</div>
+      <div class="pkg-feature">Web app MVP (functional)</div>
+      <div class="pkg-feature">Mobile app (iOS + Android)</div>
+      <div class="pkg-feature">AI feature integration</div>
+      <div class="pkg-feature">Pitch deck + one-pager</div>
+      <div class="pkg-feature">Delivered in 5–7 days</div>
+      <button class="pkg-cta syne" style="background:#fff;color:var(--accent);border:none">GET STARTED →</button>
+    </div>
+    <div class="pkg">
+      <div class="pkg-label mono">RAISE READY</div>
+      <div class="pkg-name syne">Raise</div>
+      <div class="pkg-sub">Go to investors with everything loaded</div>
+      <div class="pkg-price syne"><sup>$</sup>9,500</div>
+      <div class="pkg-feature">Everything in Launch</div>
+      <div class="pkg-feature">Demo video (2 min)</div>
+      <div class="pkg-feature">Investor one-pager</div>
+      <div class="pkg-feature">Financial model template</div>
+      <div class="pkg-feature">Post-launch support (2 weeks)</div>
+      <button class="pkg-cta syne">GET STARTED →</button>
+    </div>
+  </div>
+</section>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<!-- SUBMIT FORM -->
+<section id="submit" class="submit-section">
+  <div class="section-tag">/ SUBMIT YOUR IDEA</div>
+  <h2 class="section-title syne">YOUR TURN.</h2>
+  <div class="submit-grid">
+    <div>
+      <div class="form-group">
+        <label class="form-label mono">Idea Type</label>
+        <div class="radio-group">
+          <div class="radio-btn active" id="r1" onclick="setRadio('r1')">MVP IDEA</div>
+          <div class="radio-btn" id="r2" onclick="setRadio('r2')">WORST APP</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label mono">Your Name</label>
+        <input class="form-input" type="text" placeholder="Ahmed / Sarah / whoever">
+      </div>
+      <div class="form-group">
+        <label class="form-label mono">Email / WhatsApp</label>
+        <input class="form-input" type="text" placeholder="+92 or email">
+      </div>
+      <div class="form-group">
+        <label class="form-label mono">The Idea</label>
+        <textarea class="form-textarea" placeholder="Describe your startup idea. Be specific — what problem, who's the user, what does it do?"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label mono">Package</label>
+        <select class="form-select">
+          <option>Validate — $800</option>
+          <option>Launch — $4,500</option>
+          <option>Raise — $9,500</option>
+          <option>Just browsing for now</option>
+        </select>
+      </div>
+      <button class="btn-primary" style="width:100%;padding:1rem">JOIN THE QUEUE →</button>
+    </div>
+    <div class="submit-info">
+      <h3 class="syne">How it works</h3>
+      <div class="info-stat"><div class="stat-num syne">01</div><div class="stat-label mono">You submit the idea + pay deposit</div></div>
+      <div class="info-stat"><div class="stat-num syne">02</div><div class="stat-label mono">You appear in the live queue</div></div>
+      <div class="info-stat"><div class="stat-num syne">03</div><div class="stat-label mono">We build. You watch progress.</div></div>
+      <div class="info-stat"><div class="stat-num syne">04</div><div class="stat-label mono">MVP delivered. Pitch deck ready.</div></div>
+      <div style="border-top:1px solid var(--border);padding-top:2rem;margin-top:1rem">
+        <div class="timeline-item"><div class="tl-num mono">48h</div><div class="tl-text">Validate package delivered</div></div>
+        <div class="timeline-item"><div class="tl-num mono">5–7d</div><div class="tl-text">Launch package delivered</div></div>
+        <div class="timeline-item"><div class="tl-num mono">10–14d</div><div class="tl-text">Raise package delivered</div></div>
+        <div class="timeline-item"><div class="tl-num mono">If you pass →</div><div class="tl-text">Idea goes to next buyer in queue</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+<!-- WORST APPS -->
+<section id="worst" class="worst-section">
+  <div class="section-tag" style="color:var(--accent2)">/ THE WORST APP SERIES</div>
+  <h2 class="section-title syne" style="color:var(--accent2)">BEAUTIFULLY<br>TERRIBLE.</h2>
+  <p class="section-sub">Every week, one absurd idea ships. Some are bought. Some just exist. All of them are real.</p>
+  <div class="worst-grid">
+    <div class="worst-item">
+      <div class="worst-num mono">#001 — WEEK 1</div>
+      <div class="worst-name syne">Uncle Excuse Generator</div>
+      <div class="worst-desc">AI that generates culturally accurate Pakistani family excuses for avoiding rishta meetings.</div>
+      <span class="worst-status ws-built">BUILT + SOLD</span>
+      <div class="worst-price syne">SOLD — $220</div>
+    </div>
+    <div class="worst-item">
+      <div class="worst-num mono">#002 — WEEK 2</div>
+      <div class="worst-name syne">Load Shedding Tracker</div>
+      <div class="worst-desc">Hyperlocal WAPDA outage predictor with mood rating. "How angry is your neighbourhood?"</div>
+      <span class="worst-status ws-built">BUILT + SOLD</span>
+      <div class="worst-price syne">SOLD — $180</div>
+    </div>
+    <div class="worst-item">
+      <div class="worst-num mono">#003 — WEEK 3</div>
+      <div class="worst-name syne">Rate My Chai</div>
+      <div class="worst-desc">Crowd-sourced chai shop rating app with a "dunki ratio" metric and late-night delivery mode.</div>
+      <span class="worst-status ws-building">BUILDING NOW</span>
+      <div class="worst-price syne" style="color:var(--accent2)">BUY FOR $150 →</div>
+    </div>
+    <div class="worst-item">
+      <div class="worst-num mono">#004 — WEEK 4</div>
+      <div class="worst-name syne">Rishta Swipe</div>
+      <div class="worst-desc">Tinder but every match gets sent to your ammi first for approval. Two-stage consent flow.</div>
+      <span class="worst-status ws-built">BUILT — AVAILABLE</span>
+      <div class="worst-price syne">BUY FOR $200 →</div>
+    </div>
+    <div class="worst-item">
+      <div class="worst-num mono">#005 — WEEK 5</div>
+      <div class="worst-name syne">Biryani Dispute AI</div>
+      <div class="worst-desc">AI mediator for settling Karachi vs Lahore biryani arguments. Peer-reviewed by aunties.</div>
+      <span class="worst-status ws-idea">IDEA ACCEPTED</span>
+      <div class="worst-price syne" style="color:var(--muted)">COMING SOON</div>
+    </div>
+    <div class="worst-item" style="display:flex;flex-direction:column;justify-content:center;align-items:center;border:1px dashed var(--border);cursor:pointer;min-height:200px" onclick="sendPrompt('I want to submit a worst app idea to Nexus Synced')">
+      <div style="font-size:2rem;margin-bottom:1rem">💀</div>
+      <div class="syne" style="font-weight:700;font-size:1rem;color:var(--accent2)">SUBMIT YOURS</div>
+      <div class="mono" style="font-size:0.72rem;color:var(--muted);margin-top:0.4rem">IT MIGHT SHIP</div>
+    </div>
+  </div>
+</section>
 
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo syne">NEXUS<span>SYNCED</span></div>
+    <div class="footer-sub mono">MVP STUDIO · WORST APP SERIES · PAKISTAN</div>
+    <div style="margin-top:1rem"><span class="secp-badge mono">SECP REGISTERED · SMC · PVT LTD</span></div>
+  </div>
+  <div class="footer-links">
+    <a href="#">Instagram</a>
+    <a href="#">WhatsApp</a>
+    <a href="#">Privacy</a>
+    <a href="#">info@nexussynced.com</a>
+  </div>
+</footer>
+
+<script>
+function setRadio(id){
+  document.querySelectorAll('.radio-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
 </body>
 </html>
