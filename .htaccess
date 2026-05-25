@@ -1,2 +1,10 @@
 Options -Indexes
-DirectoryIndex index.html
+RewriteEngine On
+
+# Remove .php extension from URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L,QSA]
+
+# Protect includes directory
+RewriteRule ^includes/ - [F,L]

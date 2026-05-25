@@ -1,0 +1,129 @@
+/* ============================================================
+   NexusSynced Admin Panel Styles
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #f4f6fb; color: #1E2946;
+  display: flex; min-height: 100vh;
+}
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; }
+
+/* --- Sidebar --- */
+.sidebar {
+  width: 240px; background: #1E2946; color: #fff;
+  display: flex; flex-direction: column; position: fixed;
+  top: 0; left: 0; bottom: 0; z-index: 100;
+}
+.sidebar .logo {
+  padding: 1.5rem; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.sidebar .logo span { color: #FFA600; }
+.sidebar nav { padding: 1rem 0; flex: 1; }
+.sidebar nav a {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.7rem 1.5rem; color: rgba(255,255,255,0.6);
+  font-size: 0.85rem; transition: 0.2s;
+}
+.sidebar nav a:hover, .sidebar nav a.active {
+  color: #fff; background: rgba(255,255,255,0.05);
+}
+.sidebar .logout-link {
+  padding: 1rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.85rem; color: rgba(255,255,255,0.4);
+  transition: 0.2s; display: block;
+}
+.sidebar .logout-link:hover { color: #fff; }
+
+/* --- Main Content --- */
+.main {
+  margin-left: 240px; flex: 1; padding: 2rem; min-height: 100vh;
+}
+.main-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 2rem;
+}
+.main-header h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.5rem; }
+.main-header .subtitle { color: #9AA5BC; font-size: 0.85rem; }
+.admin-section { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid #D8DEF0; }
+.admin-section h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; }
+.admin-section h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.75rem; }
+
+/* --- Stats Cards --- */
+.stats-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 1rem; margin-bottom: 2rem; }
+.stat-card { background: #fff; border-radius: 12px; padding: 1.5rem; border: 1px solid #D8DEF0; }
+.stat-card .num { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 2rem; color: #1E2946; }
+.stat-card .label { font-size: 0.8rem; color: #9AA5BC; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.stat-card .num.accent { color: #FFA600; }
+
+/* --- Tables --- */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { text-align: left; padding: 0.75rem 0.5rem; font-weight: 600; color: #9AA5BC; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.05em; border-bottom: 2px solid #D8DEF0; }
+td { padding: 0.75rem 0.5rem; border-bottom: 1px solid #D8DEF0; vertical-align: middle; }
+tr:hover td { background: #F4F6FB; }
+td .status { display: inline-block; font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 3px; font-weight: 600; }
+.status-submitted { background: #e8e8e8; color: #666; }
+.status-building { background: #fff3cd; color: #856404; }
+.status-done { background: #d4edda; color: #155724; }
+.status-sold { background: #cce5ff; color: #004085; }
+.status-rejected { background: #f8d7da; color: #721c24; }
+td .pub-badge { font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 3px; }
+.pub-yes { background: #d4edda; color: #155724; }
+.pub-no { background: #e8e8e8; color: #999; }
+td.actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.btn-sm { padding: 0.35rem 0.75rem; font-size: 0.72rem; border: 1px solid #D8DEF0; background: #fff; border-radius: 4px; cursor: pointer; transition: 0.2s; }
+.btn-sm:hover { background: #f4f6fb; }
+.btn-sm.primary { background: #1E2946; color: #fff; border-color: #1E2946; }
+.btn-sm.primary:hover { background: #2a3a5c; }
+.btn-sm.danger { color: #dc3545; border-color: #dc3545; }
+.btn-sm.danger:hover { background: #dc3545; color: #fff; }
+.btn-sm.success { background: #28a745; color: #fff; border-color: #28a745; }
+.btn-sm.warning { background: #FFA600; color: #fff; border-color: #FFA600; }
+
+/* --- Filters --- */
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.filters button { padding: 0.4rem 1rem; font-size: 0.78rem; border: 1px solid #D8DEF0; background: #fff; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+.filters button.active, .filters button:hover { background: #1E2946; color: #fff; border-color: #1E2946; }
+
+/* --- Forms (Admin) --- */
+.admin-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.admin-form .form-row.three { grid-template-columns: 1fr 1fr 1fr; }
+.admin-form .form-group { margin-bottom: 1rem; }
+.admin-form .form-group.full { grid-column: 1 / -1; }
+.admin-form label { display: block; font-size: 0.78rem; font-weight: 600; color: #5A6A8A; margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.admin-form input, .admin-form textarea, .admin-form select { width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #D8DEF0; border-radius: 6px; font-size: 0.85rem; outline: none; transition: border-color 0.2s; }
+.admin-form input:focus, .admin-form textarea:focus, .admin-form select:focus { border-color: #1E2946; }
+.admin-form textarea { resize: vertical; min-height: 100px; }
+.admin-form input[type="checkbox"] { width: auto; }
+.admin-form .btn { padding: 0.6rem 1.5rem; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; }
+
+/* --- Login Page --- */
+.login-page { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #1E2946; margin: 0; }
+.login-box { background: #fff; border-radius: 16px; padding: 3rem; width: 100%; max-width: 400px; }
+.login-box h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.5rem; text-align: center; margin-bottom: 0.5rem; }
+.login-box .sub { text-align: center; color: #9AA5BC; margin-bottom: 2rem; font-size: 0.85rem; }
+.login-box .form-group { margin-bottom: 1.25rem; }
+.login-box .form-group label { display: block; font-size: 0.78rem; font-weight: 600; color: #5A6A8A; margin-bottom: 0.35rem; }
+.login-box .form-group input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #D8DEF0; border-radius: 8px; font-size: 0.9rem; outline: none; }
+.login-box .form-group input:focus { border-color: #1E2946; }
+.login-box .btn { width: 100%; padding: 0.75rem; background: #1E2946; color: #fff; border: none; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; }
+.login-box .error { background: #f8d7da; color: #721c24; padding: 0.75rem; border-radius: 6px; font-size: 0.82rem; margin-bottom: 1rem; }
+.login-box .secp { text-align: center; margin-top: 1.5rem; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: #9AA5BC; }
+
+/* --- Search --- */
+.search-bar { margin-bottom: 1rem; }
+.search-bar input { width: 100%; padding: 0.6rem 1rem; border: 1px solid #D8DEF0; border-radius: 6px; font-size: 0.85rem; outline: none; }
+.search-bar input:focus { border-color: #1E2946; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .sidebar { width: 60px; overflow: hidden; }
+  .sidebar .logo span, .sidebar nav a span { display: none; }
+  .main { margin-left: 60px; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .admin-form .form-row { grid-template-columns: 1fr; }
+}
